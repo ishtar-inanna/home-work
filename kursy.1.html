@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>lesson 1</title>
+</head>
+<body>
+	<script type="text/javascript" src="kursy.1.js"></script>
+
+	<script type="text/javascript">
+		
+
+		Task 1
+		let myName = "Valentina";
+
+		alert(myName);
+
+
+		//Task 3
+		let myAge = 23;
+		let AgeMySister = "25";
+
+		console.log(myAge, AgeMySister);
+
+		myAge = AgeMySister;
+		console.log(myAge);
+		// console.log(typeof myAge);
+
+
+		//Task 4
+		function Person (name, age, isHuman, yourOpinion, myResonOfLife) {
+			this.name = name;
+			this.age = age;
+			this.isHuman = isHuman;
+			this.myResonOfLife = myResonOfLife;
+			this.yourOpinion = yourOpinion;
+		}
+
+		const firstPerson = new Person("Valentina", 23, true, null)
+		console.log(firstPerson);
+
+
+		//Task 5
+		let yourAge = prompt("How old are you?");
+
+		let adult = confirm('Do you jave 18?')
+		if(adult && yourAge >= 18) {
+			alert('Welcome!')
+		} else if (!adult || yourAge < 18) {
+			alert('Sorry, you are too young!')
+		}
+
+	</script>
+</body>
+</html>
