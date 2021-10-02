@@ -86,26 +86,105 @@ function checkAge () {
 //---------Task 6----------
 
 function triangle() {
-	let firstAndSecondSide = +prompt("fisrt and second side of triangle", 12);
-	if (isNaN(firstAndSecondSide)) {
-	    firstAndSecondSide = +prompt("please, write number of side of triangle", 12);
+	let firstSide = +prompt("write fisrt side of triangle", 12);
+	if (isNaN(firstSide) || firstSide < 0) {
+	    firstSide = +prompt("please, write number of side of triangle", 12);
 	}
 
-	let ThirdSide = +prompt("Third side of triangle", 10);
-	if (isNaN(ThirdSide)) {
+    let SecondSide = +prompt("write second side of triangle", 12);
+    if (isNaN(SecondSide || SecondSide < 0)) {
+        SecondSide = +prompt("please, write number of side of triangle", 12);
+    }
+
+	let ThirdSide = +prompt("write third side of triangle", 10);
+	if (isNaN(ThirdSide) || ThirdSide < 0) {
 	    ThirdSide = +prompt("please, write number of third side of triangle", 10);
 	}
 
 
     function triangleArea(a, b, c) {
 
-    	if (c >= a+b) {
-    		return alert("Incorrect data. third side must be less than first and second sides. Please try again.")
-    	}
+    	if (a > 0 && b > 0 && c > 0) {
+            let p = (a + b + c) / 2;
+            let area = Math.sqrt(p * (p-a) * (p-b) * (p-c));
+    		console.log(`triangle area is: ${area.toFixed(3)}`)
+    	} else {
+            alert('Incorect data');
+        }
         
-        console.log(0.5 * a * b)
+        if ((a*a + b*b == c*c) || (b*b + c*c == a*a) || c*c + a*a == b*b) {
+            console.log(`The triangle is right-angeled`)
+        } else {
+            console.log(`The triangle isn't right-angeled`)
+        }
+        
     }
 
-    triangleArea(firstAndSecondSide, firstAndSecondSide, ThirdSide)
+    triangleArea(firstSide, SecondSide, ThirdSide)
 }
 
+
+//---------Task 7----------
+
+const sayHallo = () => {
+    let date = new Date();
+    let hour = date.getHours();
+
+
+    if (hour >= 23 || hour <= 5) {
+        console.log(`Buenas noches`);
+    } else if (hour > 5 && hour <= 11) {
+        console.log(`Hola`);
+    } else if (hour > 11 && hour <= 17) {
+        console.log(`Buenos dias`);
+    } else if (hour > 17 && hour < 23) {
+        console.log(`Buenas tardes`);
+    }
+}
+
+const sayHallo2 = () => {
+
+    let date2 = new Date();
+    let hour2 = date2.getHours();
+   
+    switch (hour2) {
+        case hour2 = 1:
+        case hour2 = 2:
+        case hour2 = 3:
+        case hour2 = 4:
+        case hour2 = 5:
+        case hour2 = 6:
+        case hour2 > 22:
+        case hour2 > 23:
+        case hour2 > 24:
+            console.log(`Buenas noches`);
+            break;
+
+        case hour2 = 7:
+        case hour2 = 8:
+        case hour2 = 9:
+        case hour2 = 10:
+        case hour2 = 11:
+        case hour2 = 12:
+            console.log(`Hola`);
+            break;
+
+        case hour2 > 13:
+        case hour2 > 14:
+        case hour2 > 15:
+        case hour2 > 16:
+        case hour2 > 17:
+            console.log(`Buenos dias`);
+            break;
+
+        case hour2 > 18:
+        case hour2 > 19:
+        case hour2 > 20:
+        case hour2 > 21:
+            console.log(`Buenas tardes`);
+            break;
+
+        default:
+            alert('i don.t understand');
+    }
+}
