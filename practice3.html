@@ -174,11 +174,17 @@ const printNumber = (arr, x) => {
 	let lastOne = arr.slice(arr.length-x)
     console.log(lastOne);  
 
+    if (x === undefined) {
+    	console.log(arr);
+    }
+
 } 
 
 printNumber(arrayOfNumber, 2)
 printNumber(arrayOfNumber, 3)
 printNumber(arrayOfNumber, 4)
+printNumber(arrayOfNumber)
+
 
 
 //-----------------------------task 8
