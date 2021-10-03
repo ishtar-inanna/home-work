@@ -21,15 +21,6 @@
      <button id="CheckMinNumber">Check min</button>
      <button id="CheckUniqueArr">Check unique array</button>
 
-     <br/>
-     <br/>
-     <h2>Task 8</h2>
-     <form>
-    	<input type="text" id="c">
-    </form>
-    <button id="change" onclick="capitalize()">Change</button>
-
-
 	<script type="text/javascript">
 
 		
@@ -197,6 +188,15 @@ printNumber(arrayOfNumber, 4)
 Input string: 'i love java script' 
               
 Output string: 'I Love Java Script'*/
+
+String.prototype.capitalize = function(allWords) {
+   return (allWords) ?
+      console.log(this.split(' ').map(w => w.capitalize()).join('')) : 
+      console.log(this.charAt(0).toUpperCase() + this.slice(1)); 
+}
+ "i love javascript".capitalize(true);
+
+
 
 	</script>
 	
