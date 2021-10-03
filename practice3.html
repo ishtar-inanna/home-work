@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript Prototype </title>
+</head>
+<body>
+    <h2>Task 4</h2>
+    <form>
+    	<input type="numer" name="number" id="a">
+    	<input type="numer" name="number" id="b">
+    </form>
+    <button id="start" onclick="getNumber()">Start</button>
+
+    <br/>
+    <br/>
+    <h2>Task 5 and 6</h2>
+     <button id="putNumber">Add number</button>
+
+     <button id="CheckMinNumber">Check min</button>
+     <button id="CheckUniqueArr">Check unique array</button>
+
+     <br/>
+     <br/>
+     <h2>Task 8</h2>
+     <form>
+    	<input type="text" id="c">
+    </form>
+    <button id="change" onclick="capitalize()">Change</button>
+
+
+	<script type="text/javascript">
+
+		
+//-----------------------------task 1
+
+
+let arrElement2 = [2, 3, 4, 5];
+
+const sumOfArr = (arr) => {
+	let sum = 1;
+
+	for (let i = 0; i < arr.length; i++) {
+
+		sum *= arr[i];
+		
+	}
+	console.log(sum)
+}
+
+
+sumOfArr(arrElement2);		
+
+
+
+//-----------------------------task 2
+/*let arrElement = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+const reverseElements = (arr) => {
+	for (let i = arr.length - 1; i >= 0; i--) {
+		if (arr[i] % 2 == 0) {
+		    console.log(arr[i] + " is even")
+	    } else {
+	    	console.log(arr[i] + " is odd")
+	    }
+	}
+}
+
+reverseElements(arrElement);*/
+
+
+let arrElement1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+const reverseElements1 = (arr) => {
+	let i = 0;
+	for ( i; i < 16; i++) {
+		if (arr[i] % 2 == 0) {
+		    console.log(arr[i] + " is even")
+	    } else {
+	    	console.log(arr[i] + " is odd")
+	    }
+	}
+}
+
+reverseElements1(arrElement1);
+
+
+//-----------------------------task 3
+
+
+const randArray = (k) => {
+    let int;
+    let arrOfRandomInt = [];
+	
+	for (let i = 0; i < k; i++) {
+	 
+		function getRandomArbitrary(min, max) {
+            int = Math.floor(Math.random() * (max - min) + min);
+            arrOfRandomInt.push(int);
+        }
+         
+        getRandomArbitrary(1, 500)  
+          
+	} 
+	console.log(arrOfRandomInt)
+}
+
+randArray(5);
+randArray(15);
+randArray(2);
+randArray(6);
+randArray(17);
+
+
+//-----------------------------task 4
+
+
+const getNumber = () => {
+	a = document.getElementById("a").value;
+	b = document.getElementById("b").value;
+
+	let aNumb = parseInt(a, 10);
+	let bNumb = parseInt(b, 10);
+
+
+	let sum = 0;
+
+	const raiseToDegree = (a, b) => {
+	    sum = Math.pow(a, b);
+	    console.log(sum);
+	}
+
+	raiseToDegree(aNumb, bNumb);
+}
+
+
+//-----------------------------task 5 and 6
+
+
+const someArr = [];
+
+document.getElementById("putNumber").onclick = function putNumber() {
+    let numb = +prompt("please, write number", 1);
+    someArr.push(numb);
+}
+
+document.getElementById("CheckMinNumber").onclick =
+	function findMin (arr) {
+    console.log(Math.min(...someArr))
+    someArr.length = 0;
+}
+
+	function findUnique (arr) {
+
+	let s = new Set();
+	for (var i = 0; i < arr.length; i++) {
+		s.add(arr[i]);
+	}
+
+	return (s.size === arr.length);
+}
+
+document.getElementById("CheckUniqueArr").onclick =
+function check () {
+    if (findUnique(someArr)) {
+	    console.log('True, All elements are unique')
+	    someArr.length = 0;
+    } else {
+        console.log('False, Not all elements are unique')
+        someArr.length = 0;
+    }
+}
+
+
+//-----------------------------task 7
+
+
+const arrayOfNumber = [3, 4, 10, -5];
+
+const printNumber = (arr, x) => {
+
+	let lastOne = arr.slice(arr.length-x)
+    console.log(lastOne);  
+
+} 
+
+printNumber(arrayOfNumber, 2)
+printNumber(arrayOfNumber, 3)
+printNumber(arrayOfNumber, 4)
+
+
+//-----------------------------task 8
+
+/*Напишіть функцію, яка приймає рядок як параметр і перетворює першу букву кожного слова рядка в верхній регістр.
+
+Input string: 'i love java script' 
+              
+Output string: 'I Love Java Script'*/
+
+	</script>
+	
+</body>
+</html>
