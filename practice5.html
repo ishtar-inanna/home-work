@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Practice 5</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+    //-------------------------------Task 1
+
+	let mentor = { 
+            course: "JS fundamental", 
+            duration: 3,
+            direction: "web-development" 
+        };
+
+    let student = {
+    	name: "Valentyna",
+    	surname: "Mykhailova",
+    	age: 23,
+    	job: "developer",
+    	hobby: "javascript"
+    }
+
+
+    function propsCount(currentObject) {
+    	let size = 0;
+    	for (const property in currentObject) {
+            // console.log(`${property}: ${currentObject[property]}`);
+            size++;
+        }
+        console.log(size)
+    }
+
+    propsCount(mentor);
+    propsCount(student);
+
+
+//-------------------------------Task 2
+
+    function showProps(obj) {
+    	
+    		const arrOfkeys = Object.keys(obj)
+            console.log(arrOfkeys);
+
+            const arrOfvalues = Object.values(obj)
+            console.log(arrOfvalues);
+    }
+
+    showProps(student);
+
+    function showProps2(obj) {
+    	let arrOfkeys = [];
+    	let arrOfvalues = [];
+
+        for (let [key, value] of Object.entries(obj)) {
+        	arrOfkeys.push(`${key}`);
+        	arrOfvalues.push(`${value}`);
+            
+        }
+        console.log(arrOfkeys, arrOfvalues);
+    }
+    
+    showProps2(mentor);
+
+
+//-------------------------------Task 3
+
+
+    class Person {
+    	constructor(name, surname) {
+    		this.name = name;
+    		this.surname = surname;
+    	}
+
+    	get fullName() {
+    		return this.showFullName();
+    	}
+    	
+    	showFullName() {
+    			return this.name + " " + this.surname;
+    	}
+    }
+
+    const valia = new Person ("Valentyna", "Mykhailova");
+
+    console.log(valia, valia.fullName)
+
+
+    class Student extends Person {
+    	constructor (name, surname, year) {
+    		super(name, surname);
+    		this.year = year;
+    	}
+
+    	showFullName(midleName) {
+    		return midleName + " " + this.name + " " + this.surname;
+    	}
+
+    	showCourse() {
+    		return 2021 - this.year;
+    	}
+    }
+
+    const maxim = new Student ("Maxim", "Korchak", 2015);
+
+    console.log(maxim, maxim.showFullName("Sergiovych"));
+    console.log("Current course: " + maxim.showCourse());
+
+
+    //-------------------------------Task 4
+
+
+    class Worker {
+    	_experience = 1.2;
+    	
+    	constructor(fullName, dayRate, workingDays) {
+    		this.fullName = fullName;
+    		this.dayRate = dayRate;
+    		this.workingDays = workingDays;
+    		
+    	}
+
+    	showSalary() {
+    		return this.dayRate * this.workingDays;
+    	}
+
+    	showFullNameAndSalary() {
+    		return this.fullName + ": " +this.showSalary()
+    	}
+    	
+    	get getExperience() {
+    		return `New experience: ${this._experience}`;
+    	}
+
+    	SalaryWithExperience() {
+    		return this._experience * this.showSalary();
+    	}
+
+    	showSalaryWithExperience() {
+    		return `${this.fullName} salary: ${this.SalaryWithExperience()}`
+    	}
+
+    	set changedExperience(value) {
+    		this._experience = value;
+    	}
+
+    	sortedSalary() {
+    		return `${this.fullName
+    		}: ${this.SalaryWithExperience()}`
+    	}
+    }
+
+    const tom = new Worker("Tom Tomson", 48, 22);
+    console.log(tom.fullName)
+    console.log(tom.showFullNameAndSalary());
+    console.log(tom.getExperience);
+    console.log(tom.showSalaryWithExperience());
+    tom.changedExperience = 1.5;
+    console.log(tom.getExperience);
+    console.log(tom.showSalaryWithExperience());
+
+    console.log(" ");
+
+    const john = new Worker("John Johnson", 36, 20);
+    console.log(john.fullName)
+    console.log(john.showFullNameAndSalary());
+    console.log(john.getExperience);
+    console.log(john.showSalaryWithExperience());
+    john.changedExperience = 1.5;
+    console.log(john.getExperience);
+    console.log(john.showSalaryWithExperience());
+
+    console.log(" ");
+
+    const andy = new Worker("Andy Ander", 55, 23);
+    console.log(andy.fullName)
+    console.log(andy.showFullNameAndSalary());
+    console.log(andy.getExperience);
+    console.log(andy.showSalaryWithExperience());
+    andy.changedExperience = 1.5;
+    console.log(andy.getExperience);
+    console.log(andy.showSalaryWithExperience());
+
+    console.log(" ");
+    console.log(tom.sortedSalary());
+    console.log(john.sortedSalary());
+    console.log(andy.sortedSalary());
+
+
+    //-------------------------------Task 5
+
+
+    class GeometricFigure {
+    	
+	    getArea() {
+	        return 0;
+        }
+        
+        toString() {
+            return Object.getPrototypeOf(this).constructor.name;
+        }
+    
+    }
+
+
+    class Triangle extends GeometricFigure {
+    	constructor(h, a) {
+    		super();
+    		this.h = h;
+    		this.a = a;
+    	}
+
+    	getArea() {
+    		return 0.5 * this.h * this.a;
+    	}
+    }
+
+    //const triangle = new Triangle(10, 5);
+
+    class Square extends GeometricFigure {
+    	constructor(b) {
+    		super();
+    		this.b = b;
+    	}
+
+    	getArea() {
+    		return this.b * this.b;
+    	}
+    }
+
+    //const square = new Square(7);
+    
+    class Circle extends GeometricFigure {
+    	constructor(p, r) {
+    		super();
+    		this.p = p;
+    		this.r = r;
+    	}
+
+    	getArea() {
+    		return this.p * (this.r * this.r);
+    	}
+    }
+
+    //const circle = new Circle(3.14, 6);
+
+
+    const arrOfFigures = [new Triangle(5, 10), new Square(7), new Circle(3.14, 6)];
+
+
+    function handleFigures (figures) {
+        
+        const sum = figures.reduce((prevReturn, item) => {
+        console.log(`Geometric figure: ${item.toString()}, area: ${item.getArea()}`);
+        
+        return prevReturn + item.getArea();
+  }, 0)
+  
+  console.log(sum);
+}
+
+handleFigures (arrOfFigures)
+
+
+</script>
+</body>
+</html>
