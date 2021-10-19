@@ -147,10 +147,24 @@
     		this._experience = value;
     	}
 
+        getSalaryWithExperience() {
+            return this.SalaryWithExperience();
+        }
+
     	sortedSalary() {
-    		return `${this.fullName
-    		}: ${this.SalaryWithExperience()}`
-    	}
+
+            let salaryofTom = tom.getSalaryWithExperience();
+            let salaryofJohn = john.getSalaryWithExperience();
+            let salaryofAndy = andy.getSalaryWithExperience();
+
+            const arrOfSalary = [salaryofTom, salaryofJohn, salaryofAndy];
+
+            arrOfSalary.sort(function(a, b) {
+            return a - b;
+            });
+            
+            console.log(arrOfSalary);
+        }
     }
 
     const tom = new Worker("Tom Tomson", 48, 22);
@@ -185,10 +199,8 @@
     console.log(andy.showSalaryWithExperience());
 
     console.log(" ");
-    console.log(tom.sortedSalary());
-    console.log(john.sortedSalary());
-    console.log(andy.sortedSalary());
-
+    let salary = new Worker();
+    salary.sortedSalary()
 
     //-------------------------------Task 5
 
