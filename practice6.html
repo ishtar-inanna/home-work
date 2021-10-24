@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Practice 6</title>
+</head>
+<body>
+		
+	<div id="test">First</div>
+	<button id="but">cklick</button>
+	
+	<br/>
+
+	<img class="image" src="dog.jpg" alt="dog" id="img">
+	
+	<br/>
+
+	<h2>Article header</h2>      
+      <div id="text">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+      </div>
+	<p>Another text</p>
+
+	<br/>
+
+	<ul id="list">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<br/>
+
+	<h1>I'am a big header!!!</h1>
+	<div id="myDiv">
+		<p>First paragraph</p>
+		<p>Second paragraph</p>
+		<p>Third paragraph</p>
+		<p>Fourth paragraph</p>
+	</div>
+	<ul id="myList">
+		<li>Make</li>
+		<li>me</li>
+		<li>horizontal!</li>
+	</ul>
+	<span>Make me invisible, please!</span>
+
+	<br/>
+
+	<input type="text" id="input1" value="Text1">
+	<input type="text" id="input2" value="Text2">
+	<button id="demo">Change values</button>
+
+	<script type="text/javascript">
+
+// -----------------------task 1
+		
+		// 1 variant
+		//document.body.innerHTML = '<div>Last</div>'
+
+
+		//2 variant
+		//document.getElementById('test').innerHTML = "Last";
+
+
+		//3 variant
+		// let test = document.body.children[0];
+		// test.outerHTML = "<div>Last</div>"
+		// document.write(test)
+
+
+		//4 variant
+
+		 let div = document.getElementById('but');
+         div.addEventListener('click', changeValueOfButton, false);
+ 
+          function changeValueOfButton() {
+          document.getElementById('test').innerHTML = 'Last'; }
+
+// -----------------------task 2
+
+	
+		img.setAttribute('src', 'cat.jpg');
+		img.setAttribute('alt', 'cat');
+
+		//alert(img.getAttribute('src'));
+		//alert(img.getAttribute('alt'));
+
+
+
+// -----------------------task 3
+
+		let paragraphs = document.querySelectorAll('div#text > p')
+		//console.log(paragraphs)
+
+		paragraphs.forEach((element, i) => { 
+			console.log(`Selector text ${i}: ` + element.innerText);
+		})
+
+
+
+// -----------------------task 4
+
+        //first method
+		let list = document.querySelectorAll('ul#list > li');
+		alert(`${list[0].innerHTML}, ${list[4].innerHTML}, ${list[1].innerHTML}, ${list[3].innerHTML}, ${list[2].innerHTML}`)
+        
+
+		//second method
+        alert(`${document.getElementById("list").firstElementChild.innerHTML}, ${document.getElementById("list").lastElementChild.innerHTML}, ${list[1].innerHTML}, ${list[3].innerHTML}, ${list[2].innerHTML}`)
+
+// -----------------------task 5
+
+		
+    function changeCSS () {
+		document.querySelector("h1").style.backgroundColor = "lightgreen";
+		
+		let list1 = document.querySelectorAll('div#myDiv > p')
+		
+		list1[0].innerHTML = '<p><b>First paragraph</b></p>'
+		list1[1].style.color = 'red';
+		list1[2].style.textDecoration = 'underline';
+		list1[3].innerHTML = '<p><i>Fourth paragraph</i></p>'
+
+		// first method
+		// let parent = document.querySelector('#myList');
+		// let list2 = document.querySelectorAll('ul#myList > li');
+		// let child1 = list2[0];
+		// parent.removeChild(child1)
+		// let child2 = list2[1];
+		// parent.removeChild(child2)
+		// let child3 = list2[2];
+		// parent.removeChild(child3)
+
+		// parent.innerHTML = '<p>Makemehorizontal!</p>'
+
+		// second method
+		let myList = document.getElementById("myList");
+		myList.style.display = "flex";
+		myList.style.listStyle = "none";
+
+		let span = document.querySelector('span');
+		span.style.display = "none"
+	}
+
+    changeCSS();
+
+	
+// -----------------------task 6
+
+    let input1 = prompt("Mamaaa", "just kill a man");
+	document.getElementById("input1").value = input1;
+
+	let input2 = prompt("Mamaaa", "life had just begun");
+	document.getElementById("input2").value = input2;
+
+	document.getElementById("demo").addEventListener("click", changeValueOfInput); 
+	
+	function changeValueOfInput() {
+		let smthg = document.getElementById("input1").value;
+		document.getElementById("input1").value = document.getElementById("input2").value;
+		document.getElementById("input2").value = smthg;
+	}
+
+
+// -----------------------task 7
+
+
+    let newMain = document.createElement("main")
+	newMain.className = "mainClass check item";
+	
+	let newDiv = document.createElement("div")
+	newDiv.id = "myDiv";
+
+	let newPar = document.createElement("p")
+	newPar.innerHTML = "First paragraph";
+
+	newDiv.appendChild(newPar);
+	newMain.appendChild(newDiv);
+	document.body.appendChild(newMain);
+
+	</script>
+</body>
+</html>
