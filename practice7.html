@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 7</title>
+</head>
+<body>
+
+    <p id ='text'>I learning JavaScript events!</p> 
+    <div>
+	    <button onclick="changeCSS()">Change style!</button>
+    </div>
+
+</br>
+</br>
+
+    <button onclick="change('blue')">Click to make the page blue</button>
+    <button ondblclick = "change('pink')">Double-click to make the page pink</button>
+    <button onmousedown = "change('brown')" onmouseup ="change('white')">Click and hold to make the page brown</button>
+    <a href="" onmouseover = "change('yellow')" onmouseout = "change('white')">Hover over to make page yellow</a>
+
+</br>
+</br>
+    
+<div style = "width: 200px; height: 100px; padding: 15px; border: 1px solid black">
+    <select id="selectID">
+        <option value="Peter">Peter</option>
+        <option value="John">John</option>
+        <option value="Alise">Alise</option>
+        <option value="Alex">Alex</option>
+        <option value="Iren">Iren</option>
+    </select>
+    <button id="delete">Choose and Delete</button>
+</div>
+
+</br>
+</br>
+
+    <button id="but" onclick="clickfunc()" onmouseover="overfunc()" onmouseout="outfunc()">Change content</button>
+    <button id="but1" onclick="changeContent()">Change content 1</button>
+	<p id="text"></p>
+
+</br>
+</br>
+
+	<p id="textSize"></p>
+
+</br>
+</br>
+
+    <select name="country" id="country">
+	    <option value="ger">Germany</option>
+	    <option value="usa">USA</option>
+	    <option value="ukr">Ukraine</option>
+    </select>
+                    
+    <select name="cities" id="cities"></select>
+    <p id="p"></p>
+
+
+    <script>
+
+// -----------------------task 1 -----------------------//
+
+    
+        let newTab = window.open("", "", "width = 300, height = 300");
+        
+        setTimeout(() => newTab.resizeTo(500, 500), 2000);
+        setTimeout(() => newTab.moveBy(200, 200), 4000);
+        setTimeout(() => newTab.close(), 6000);
+
+
+// -----------------------task 2 -----------------------//
+
+    function changeCSS() {
+        document.getElementById('text').style.color = "orange";
+        document.getElementById('text').style.fontSize = "20px";
+        document.getElementById('text').style.fontFamily = "Comic Sans MS";
+    }
+
+// -----------------------task 3 -----------------------//
+
+        function change(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+// -----------------------task 4 -----------------------//
+
+    document.getElementById('delete').addEventListener('click', removeValue);
+    
+    function removeValue () {
+        
+        const listOpt = document.querySelector('#selectID');
+        let selected = [];
+
+        for (let i = 0; i < listOpt.options.length; i++) {
+            selected[i] = listOpt.options[i].selected;
+        }
+     
+        let index = listOpt.options.length;
+            while (index--) {
+                if (selected[index]) {
+                    listOpt.remove(index);
+                }
+            }
+    };
+
+// -----------------------task 5 -----------------------//
+
+    function clickfunc() {
+        	document.getElementById('text').innerHTML += "I was pressed!" + "</br>";
+        }
+
+        function overfunc() {
+        	document.getElementById('text').innerHTML += "Mouse on me!" + "</br>";
+        }
+
+        function outfunc() {
+        	document.getElementById('text').innerHTML += "Mouse is not on me!" + "</br>";
+        }
+
+
+        function changeContent() {
+        	let but = document.getElementById('but1');
+
+        	but.setAttribute('onclick', 
+        		`document.getElementById('text').innerHTML += "I was pressed!" + "</br>"`);
+        	
+        	but.setAttribute('onmouseover',
+        		`document.getElementById('text').innerHTML += "Mouse on me!" + "</br>"`);
+        	
+        	but.setAttribute('onmouseout',
+        		`document.getElementById('text').innerHTML += "Mouse is not on me!" + "</br>"`);
+        	}
+
+// -----------------------task 6 -----------------------//
+
+    //  function displaySize() {
+
+    //     pageWidth = window.innerWidth;
+    //     pageHeight = window.innerHeight;
+         
+    //     let size = `Width: ${pageWidth}, Height: ${pageHeight}`
+    //     document.getElementById('textSize').innerHTML = size;
+    // };
+    //  window.addEventListener("resize",displaySize);
+
+    window.addEventListener("resize", () => {
+        pageWidth = window.innerWidth;
+        pageHeight = window.innerHeight;
+         
+        document.getElementById('textSize').innerHTML = `Width: ${pageWidth}, Height: ${pageHeight}`;
+    }, false);
+
+// -----------------------task 7 -----------------------//
+
+
+    let selectCountry = document.getElementById('country');
+    let selectCities = document.getElementById('cities');
+    let pElem = document.getElementById('p')
+
+            selectCountry.addEventListener('change', function() {
+                let index = selectCountry.selectedIndex;
+
+                if(this.value == "ger") {
+                    document.getElementById('cities').innerHTML =
+                    "<option>Berlin</option><option>München</option><option>Köln</option>"
+                    pElem.innerHTML = `Country:  ${selectCountry.options[index].innerText}`;
+
+                    selectCities.addEventListener('change', function() {
+                     let indexOfCities = selectCities.selectedIndex;
+                     pElem.innerHTML = `Country:  ${selectCountry.options[index].innerText}, Cities:  ${selectCities.options[indexOfCities].innerText}`
+                    })  
+
+                }
+
+                else if (this.value == "usa") {
+                    document.getElementById('cities').innerHTML =
+                    "<option>New York City</option><option>Los Angeles</option><option>Chicago</option>"
+                    pElem.innerHTML = `Country:  ${selectCountry.options[index].innerText}`;
+
+                    selectCities.addEventListener('change', function() {
+                     let indexOfCities = selectCities.selectedIndex;
+                     pElem.innerHTML = `Country:  ${selectCountry.options[index].innerText}, Cities:  ${selectCities.options[indexOfCities].innerText}`;
+                    })
+                }
+                
+                else if (this.value == "ukr") {
+                    document.getElementById('cities').innerHTML =
+                    "<option>Kyiv</option><option>Lviv</option><option>Kharkiv</option>"
+                    pElem.innerHTML = `Country:  ${selectCountry.options[index].innerText}`;
+
+                    selectCities.addEventListener('change', function() {
+                     let indexOfCities = selectCities.selectedIndex;
+                     pElem.innerHTML = `Country:  ${selectCountry.options[index].innerText}, Cities:  ${selectCities.options[indexOfCities].innerText}`
+                    })
+                }
+            });
+            
+    </script>
+ </body>
+</html>
