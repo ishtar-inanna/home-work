@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Practice 8</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+//------------------------Task 1 ------------------------//
+    
+    function upperCase(str) {
+
+		let regExp = /^[A-Z]/;
+		return regExp.test(str)
+
+	}
+
+		console.log(upperCase('regexp'));
+		console.log(upperCase('Regexp'));
+		console.log(upperCase('reGexp'));
+
+//------------------------Task 2 ------------------------//
+    
+    function checkEmail(str) {
+
+	    //let regExp = /\w\W\S+\.\w+/; - 1 variant
+	    
+	    let regExp = /\w+@\w+\.\w+/; // - 2 variant
+		return regExp.test(str)
+
+	}
+
+	console.log(checkEmail('Qmail2@gmail.com'));
+	console.log(checkEmail('ishtar!.mvv7@gmail.com'));
+
+
+//------------------------Task 3 ------------------------//
+
+    let regExp3 = /d(b+)(d)/i;
+    console.log('cdbBdbsbz'.match(regExp3));
+
+
+//------------------------Task 4 ------------------------//
+
+    let regExp4 = /(\w+) (\w+)/i;
+	let str4 = "Java Script"
+
+	console.log(str4.replace(regExp4, '$2, $1'))
+
+
+//------------------------Task 5 ------------------------//
+
+
+    //let regExp5 = /\d{4}(-)\d{4}(-)\d{4}(-)\d{4}/
+    let regExp5 = /\d{4}\S\d{4}\S\d{4}\S\d{4}/
+
+    console.log('9999-9999-9999-9999'.match(regExp5));
+
+
+//------------------------Task 6 ------------------------//
+    function checkEmail(mail) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return (true);
+        } else {
+            return (false)
+		}
+    } 
+
+	console.log(checkEmail('my_mail@gmail.com'));
+    console.log(checkEmail('#my_mail@gmail.com'));
+	console.log(checkEmail('my_ma--il@gmail.com'));
+
+
+//------------------------Task 7 ------------------------//
+
+
+    function checkLogin (login) {
+		let regExp7 = /^[a-zA-Z]{1}[a-zA-z0-9\.]{1,9}$/;
+		let number = /[0-9\.]+/g;
+		let resNum = login.match(number);
+		let result = regExp7.test(login);
+		console.log(`${result}, ${resNum}`)
+	}
+    
+	checkLogin('ee1.1ret3')
+	checkLogin('ee1*1ret3')
+	checkLogin('1ee.1ret3')
+
+	</script>
+</body>
+</html>
